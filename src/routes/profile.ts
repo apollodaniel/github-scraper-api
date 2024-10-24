@@ -11,8 +11,9 @@ import fs from 'fs';
 interface Profile {
 	name: string;
 	username: string;
-	bio: string;
+	description: string;
 	profile_picture: string;
+	extras: String[];
 }
 
 const router = Router();
@@ -41,7 +42,7 @@ async function get_profile_info(user: String): Promise<Profile> {
 		dom.window.document
 			.querySelector(FULL_NAME_SELECTOR)
 			?.textContent?.replace('\n', '')
-			.trim() || 'Unknown name';
+			.trim() || 'No name';
 
 	const username =
 		dom.window.document
@@ -53,7 +54,7 @@ async function get_profile_info(user: String): Promise<Profile> {
 		dom.window.document
 			.querySelector(USER_BIO_SELECTOR)
 			?.textContent?.replace('\n', '')
-			.trim() || '';
+			.trim() || 'No description';
 
 	const profile_picture =
 		dom.window.document
@@ -63,8 +64,9 @@ async function get_profile_info(user: String): Promise<Profile> {
 	return {
 		name: name,
 		username: username.toString(),
-		bio: user_bio,
+		description: user_bio,
 		profile_picture: profile_picture.split('?')[0] || profile_picture,
+		extras: [],
 	};
 }
 

@@ -85,12 +85,12 @@ function parse_repositories(page: jsdom.JSDOM): Repository[] {
 			repository
 				.querySelector(REPOSITORY_MAINLANGUAGE_SELECTOR)
 				?.textContent?.replace('\n', '')
-				.trim() || '';
+				.trim() || 'None';
 		const description =
 			repository
 				.querySelector(REPOSITORY_DESCRIPTION_SELECTOR)
 				?.textContent?.replace('\n', '')
-				.trim() || '';
+				.trim() || 'No description';
 
 		return {
 			name: name,
