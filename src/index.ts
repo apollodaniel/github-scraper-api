@@ -7,10 +7,9 @@ const app = express();
 app.use(express.json());
 
 app.use(
-	// 	cors({
-	// 		origin: 'apollodaniel.codemagic.app',
-	// 	}),
-	cors(),
+	cors({
+		origin: 'https://portfolio-amber-tau-58.vercel.app',
+	}),
 );
 
 app.use(mainRouter);
